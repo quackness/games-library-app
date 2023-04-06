@@ -5,11 +5,12 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "SharkComp",
   data() {
     return {
-      msg: "Hello, this is Shark",
+      msg: "",
     };
   },
 };
