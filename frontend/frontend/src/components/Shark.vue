@@ -6,6 +6,14 @@
 
 <script>
 export default {
+  name: "Shark",
+  data() {
+    return {
+      msg: "Hello, this is Shark"
+    }
+
+
+  }
  
     
   }
