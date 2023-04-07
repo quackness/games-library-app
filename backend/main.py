@@ -12,7 +12,7 @@ def greetings():
 
 @app.route('/shark', methods=['GET'])
 def shark():
-  return("This is a good Shark!")
+  return("This is Shark!")
 
 if __name__ == "__main__":
   app.run(debug=True)
