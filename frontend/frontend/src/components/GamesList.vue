@@ -33,6 +33,16 @@
                 <td>DO</td>
                 <td>RE</td>
                 <td>MI</td>
+                <td>
+                  <div class="btn-goup" role="group">
+                    <button type="button" class="btn btn-info btn-sm">
+                      Update
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm">
+                      Delete
+                    </button>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
