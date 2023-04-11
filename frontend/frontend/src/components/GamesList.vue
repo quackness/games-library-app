@@ -256,7 +256,7 @@ export default {
       e.preventDefault(), this.$ref.addGameModal.hide();
       this.initForm();
     },
-    //update game
+    //update individual game
     updateGame(payLoad, gameId) {
       const path = `http://localhost:5000/games/${gameId}`;
       axios
@@ -270,6 +270,10 @@ export default {
           console.error(err);
           this.getGames();
         });
+    },
+    //handle update button
+    editGame(game) {
+      this.editForm = game;
     },
   },
   created() {
