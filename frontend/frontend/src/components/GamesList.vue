@@ -18,6 +18,9 @@
           <hr />
           <br />
           <!-- alert message -->
+          <b-alert variant="success" v-if="showMessage" show>{{
+            message
+          }}</b-alert>
           <button
             type="button"
             class="btn btn-success btn-sm"
@@ -137,6 +140,7 @@ export default {
       },
     };
   },
+  message: "",
   methods: {
     //get function
     getGames() {
@@ -159,6 +163,10 @@ export default {
         .post(path, payLoad)
         .then(() => {
           this.getGames();
+          //for alert
+          this.message = "Game added";
+          //to show the actual message
+          this.showMessage = true;
         })
         .catch((err) => {
           console.error(err);
