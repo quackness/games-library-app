@@ -30,8 +30,8 @@
             <tbody>
               <tr v-for="(game, index) in games" :key="index">
                 <td>{{ game.title }}</td>
-                <td>{{ game.genre }}</td>
-                <td>{{ game.played }}</td>
+                <td>Re</td>
+                <td>Mi</td>
                 <td>
                   <div class="btn-goup" role="group">
                     <button type="button" class="btn btn-info btn-sm">
@@ -72,10 +72,9 @@ export default {
           console.error(err);
         });
     },
-    created() {
-      this.getGames();
-      console.log(this);
-    },
+  },
+  created() {
+    this.getGames();
   },
 };
 </script>
