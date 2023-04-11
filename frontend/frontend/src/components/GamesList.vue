@@ -124,6 +124,11 @@ export default {
   data() {
     return {
       games: [],
+      addGameForm: {
+        title: "",
+        genre: "",
+        played: [],
+      },
     };
   },
   methods: {
