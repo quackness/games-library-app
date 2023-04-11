@@ -51,3 +51,29 @@
     </div>
   </div>
 </template>
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      games: [],
+    };
+  },
+  methods: {
+    getGames() {
+      const path = "http://localhost:5000/games";
+      axios
+        .get(path)
+        .then((response) => {
+          this.games = response.data.games;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
+    created() {
+      this.getGames();
+    },
+  },
+};
+</script>
