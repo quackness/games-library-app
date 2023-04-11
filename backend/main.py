@@ -14,6 +14,34 @@ def greetings():
 def shark():
   return("This is Shark!")
 
+GAMES = [
+  {
+  'title': '2k21',
+  'genre': 'sports',
+  'played': True
+  },
+  {
+  'title': 'Evil Within',
+  'genre': 'horror',
+  'played': False
+  },
+  {
+  'title': 'The last of us',
+  'genre': 'survival',
+  'played': True
+  },
+  {
+  'title': 'Days gone',
+  'genre': 'horror/survival',
+  'played': False
+  },
+  {
+  'title': 'Mario',
+  'genre': 'retro',
+  'played': True
+  },
+]
+
 if __name__ == "__main__":
   app.run(debug=True)
 
