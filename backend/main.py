@@ -63,7 +63,7 @@ def all_games():
   return jsonify(response_object)
 
 #The PUT and DELETE route handlers
-@app.route('/games/<game_id>', methods=['PUT'])
+@app.route('/games/<game_id>', methods=['PUT', 'DELETE'])
 def single_game(game_id):
   response_object = {'status': 'success'}
   if request.method == "PUT":
@@ -76,6 +76,10 @@ def single_game(game_id):
       'played': post_data.get('played')
     })
     response_object['message'] = 'Game updated'
+  if request.method == 'DELETE':
+    remove_game(game_id)
+    response_object['message'] = "Game removed"
+  return jsonify(response_object)
 
 
 # Removing the game to update / delete
