@@ -42,6 +42,15 @@ GAMES = [
   },
 ]
 
+#get route
+@app.route('/games', methods=['GET'])
+def all_games():
+  return jsonify({
+    'games': GAMES,
+    'status': 'successs'
+  })
+
+
 if __name__ == "__main__":
   app.run(debug=True)
 
