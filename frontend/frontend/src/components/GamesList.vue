@@ -27,12 +27,11 @@
                 <th scope="col">Actions</th>
               </tr>
             </thead>
-
             <tbody>
-              <tr>
-                <td>DO</td>
-                <td>RE</td>
-                <td>MI</td>
+              <tr v-for="(game, index) in games" :key="index">
+                <td>{{ game.title }}</td>
+                <td>{{ game.genre }}</td>
+                <td>{{ game.played }}</td>
                 <td>
                   <div class="btn-goup" role="group">
                     <button type="button" class="btn btn-info btn-sm">
@@ -64,8 +63,10 @@ export default {
       const path = "http://localhost:5000/games";
       axios
         .get(path)
-        .then((response) => {
-          this.games = response.data.games;
+        .then((res) => {
+          console.log(res);
+          this.games = res.data.games;
+          console.log(res);
         })
         .catch((err) => {
           console.error(err);
@@ -73,6 +74,7 @@ export default {
     },
     created() {
       this.getGames();
+      console.log(this);
     },
   },
 };
