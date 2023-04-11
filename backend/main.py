@@ -42,7 +42,7 @@ GAMES = [
   },
 ]
 
-#get route
+#get route here
 @app.route('/games', methods=['GET'])
 def all_games():
   return jsonify({
