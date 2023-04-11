@@ -61,6 +61,60 @@
           </footer>
         </div>
       </div>
+      <!-- first modal -->
+      <b-modal
+        ref="addGameModal"
+        id="game-modal"
+        title="Add a new game"
+        hide-backdrop
+        hide-footer
+      >
+        <b-form @submit="onSubmit" @reset="onReset" class="w-100">
+          <b-form-group
+            id="form-title-group"
+            label="Title"
+            label-for="form-title-input"
+          >
+            <b-form-input
+              id="form-title-input"
+              type="text"
+              v-model="addGameForm.title"
+              required
+              placeholder="Enter game name"
+            >
+            </b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            id="form-genre-group"
+            label="Genre"
+            label-for="form-genre-input"
+          >
+            <b-form-input
+              id="form-genre-input"
+              type="text"
+              v-model="addGameForm.genre"
+              required
+              placeholder="Enter ganre"
+            >
+            </b-form-input>
+          </b-form-group>
+          <!-- checkbox -->
+          <b-form-group id="form-played-group">
+            <b-form-checkbox-group
+              v-model="addGameForm.played"
+              id="form-checks"
+            >
+              <b-form-checkbox value="true"> Played? </b-form-checkbox>
+            </b-form-checkbox-group>
+          </b-form-group>
+          <!-- buttons -->
+          <button type="submit" variant="primary">Submit</button>
+          <button type="reset" variant="primary">Reset</button>
+
+          <button></button>
+        </b-form>
+      </b-modal>
     </div>
   </div>
 </template>
