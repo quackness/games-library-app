@@ -62,6 +62,31 @@ def all_games():
     # to convert a json output into a response object 
   return jsonify(response_object)
 
+#The PUT and DELETE route handlers
+@app.route('/games/<game_id>', methods=['PUT'])
+def single_game(game_id):
+  response_object = {'status': 'success'}
+  if request.method == "PUT":
+    post_data = request.get_json()
+    remove_game(game_id)
+    GAMES.append({
+      'id': uuid.uuid4().hex,
+      'title': post_data.get('title'),
+      'genre': post_data.get('genre'),
+      'played': post_data.get('played')
+    })
+    response_object['message'] = 'Game updated'
+
+
+# Removing the game to update / delete
+def remove_game(game_id):
+  for game in GAMES:
+    if game['id'] == game_id:
+        GAMES.remove(game)
+        return True
+  return False
+
+
 if __name__ == "__main__":
   app.run(debug=True)
 
