@@ -180,7 +180,11 @@ export default {
         played,
       };
       this.addGame(payload);
-      this.initForm;
+      this.initForm();
+    },
+    onReset(e) {
+      e.preventDefault(), this.$ref.addGameModal.hide();
+      this.initForm();
     },
   },
   created() {
