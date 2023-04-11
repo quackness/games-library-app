@@ -53,6 +53,12 @@
               </tr>
             </tbody>
           </table>
+          <footer
+            class="bg-primary text-white text-center"
+            style="border-radius: 10px"
+          >
+            Copyright &copy; All Rights Reserved 2023.
+          </footer>
         </div>
       </div>
     </div>
