@@ -51,7 +51,12 @@
                 </td>
                 <td>
                   <div class="btn-goup" role="group">
-                    <button type="button" class="btn btn-info btn-sm">
+                    <button
+                      type="button"
+                      class="btn btn-info btn-sm"
+                      v-b-modal.game-update-modal
+                      @click="editGame(game)"
+                    >
                       Update
                     </button>
                     <button type="button" class="btn btn-danger btn-sm">
@@ -124,6 +129,57 @@
           <button></button>
         </b-form>
       </b-modal>
+      <!-- second modal starts here-->
+      <b-modal
+        ref="editGameModal"
+        id="game-update-modal"
+        title="Update"
+        hide-backdrop
+        hide-footer
+      >
+        <b-form @submit="onSubmitUpdate" @reset="onResetUpdate" class="w-100">
+          <b-form-group
+            id="form-title-edit-group"
+            label="Title"
+            label-for="form-title-edit-input"
+          >
+            <b-form-input
+              id="form-title-edit-input"
+              type="text"
+              v-model="editForm.title"
+              required
+              placeholder="Enter title"
+            >
+            </b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            id="form-genre-edit-group"
+            label="Genre"
+            label-for="form-genre-edit-input"
+          >
+            <b-form-input
+              id="form-genre-edit-input"
+              type="text"
+              v-model="editForm.genre"
+              required
+              placeholder="Enter ganre"
+            >
+            </b-form-input>
+          </b-form-group>
+          <!-- checkbox -->
+          <b-form-group id="form-played-edit-group">
+            <b-form-checkbox-group v-model="editForm.played" id="form-checks">
+              <b-form-checkbox value="true"> Played? </b-form-checkbox>
+            </b-form-checkbox-group>
+          </b-form-group>
+          <!-- buttons -->
+          <b-button type="submit" variant="outline-info">Submit</b-button>
+          <b-button type="reset" variant="outline-danger">Reset</b-button>
+
+          <button></button>
+        </b-form>
+      </b-modal>
     </div>
   </div>
 </template>
@@ -134,6 +190,12 @@ export default {
     return {
       games: [],
       addGameForm: {
+        title: "",
+        genre: "",
+        played: [],
+      },
+      editForm: {
+        id: "",
         title: "",
         genre: "",
         played: [],
@@ -193,6 +255,21 @@ export default {
     onReset(e) {
       e.preventDefault(), this.$ref.addGameModal.hide();
       this.initForm();
+    },
+    //update game
+    updateGame(payLoad, gameId) {
+      const path = `http://localhost:5000/games/${gameId}`;
+      axios
+        .get(path, payLoad)
+        .then(() => {
+          this.getGames();
+          this.message = "Game updated";
+          this.showMessage = true;
+        })
+        .catch((err) => {
+          console.error(err);
+          this.getGames();
+        });
     },
   },
   created() {
