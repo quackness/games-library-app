@@ -18,7 +18,13 @@
           <hr />
           <br />
           <!-- alert message -->
-          <button type="button" class="btn btn-success btn-sm">Add game</button>
+          <button
+            type="button"
+            class="btn btn-success btn-sm"
+            v-b-modal.game-modal
+          >
+            Add game
+          </button>
           <br />
           <br />
           <table class="table table-hover">
@@ -109,8 +115,8 @@
             </b-form-checkbox-group>
           </b-form-group>
           <!-- buttons -->
-          <button type="submit" variant="primary">Submit</button>
-          <button type="reset" variant="primary">Reset</button>
+          <b-button type="submit" variant="outline-info">Submit</b-button>
+          <b-button type="reset" variant="outline-danger">Reset</b-button>
 
           <button></button>
         </b-form>
@@ -132,6 +138,7 @@ export default {
     };
   },
   methods: {
+    //get function
     getGames() {
       const path = "http://localhost:5000/games";
       axios
@@ -144,6 +151,36 @@ export default {
         .catch((err) => {
           console.error(err);
         });
+    },
+    //post function
+    addGame(payLoad) {
+      const path = "http://localhost:5000/games";
+      axios
+        .post(path, payLoad)
+        .then(() => {
+          this.getGames();
+        })
+        .catch((err) => {
+          console.error(err);
+          this.getGames();
+        });
+    },
+    initForm() {
+      this.addGameForm.title = "";
+      this.addGameForm.genre = "";
+      this.addGameForm.played = [];
+    },
+    onSubmit(e) {
+      e.preventDefault();
+      this.$refs.addGameModal.hide();
+      let played = false;
+      const payload = {
+        title: this.addGameForm.title,
+        genre: this.addGameForm.genre,
+        played,
+      };
+      this.addGame(payload);
+      this.initForm;
     },
   },
   created() {
