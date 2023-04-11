@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+import uuid
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -42,7 +43,7 @@ GAMES = [
   },
 ]
 
-#get route here
+#get route here and post
 @app.route('/games', methods=['GET', 'POST'])
 def all_games():
   response_object = {'status': 'success'}
@@ -50,7 +51,7 @@ def all_games():
     #  request.get_json() converts the JSON object into Python data
     post_data = request.get_json()
     GAMES.append({
-      'id': post_data.get('id'),
+      'id': uuid.uuid4().hex,
       'title': post_data.get('title'),
       'genre': post_data.get('genre'),
       'played': post_data.get('played')})
