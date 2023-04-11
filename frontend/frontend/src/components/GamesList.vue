@@ -239,7 +239,11 @@ export default {
       this.addGameForm.title = "";
       this.addGameForm.genre = "";
       this.addGameForm.played = [];
+      this.editForm.genre = "";
+      this.editForm.title = "";
+      this.editForm.played = [];
     },
+    //this is for modal 1 to submit a new game
     onSubmit(e) {
       e.preventDefault();
       this.$refs.addGameModal.hide();
@@ -252,9 +256,32 @@ export default {
       this.addGame(payload);
       this.initForm();
     },
+    //this is for modal 1 - to reset the games values
     onReset(e) {
       e.preventDefault(), this.$ref.addGameModal.hide();
       this.initForm();
+    },
+
+    //this is for modal 2 - to submit updated game
+    onSubmitUpdate(e) {
+      e.preventDefault();
+      this.$refs.editGameModal.hide();
+      let played = false;
+      if (this.editForm.played[0]) played = true;
+      const payload = {
+        title: this.editGameForm.title,
+        genre: this.editGameForm.genre,
+        played,
+      };
+      this.updateGame(payload, this.editForm.id);
+    },
+
+    //handle cancel button click
+    onResetUpdate(e) {
+      e.preventDefault();
+      this.$$refs.editGameModal.hide();
+      this.initForm();
+      this.getGames();
     },
     //update individual game
     updateGame(payLoad, gameId) {
