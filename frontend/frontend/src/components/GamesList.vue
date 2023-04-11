@@ -9,7 +9,12 @@
       />
       <div class="row">
         <div class="col-sm-12">
-          <p>Games Library 🕹️</p>
+          <h1
+            class="text-center bg-primary text-white"
+            style="border-radius: 10px"
+          >
+            Games Library 🕹️
+          </h1>
           <hr />
           <br />
           <!-- alert message -->
