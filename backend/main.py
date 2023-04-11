@@ -50,6 +50,7 @@ def all_games():
     #  request.get_json() converts the JSON object into Python data
     post_data = request.get_json()
     GAMES.append({
+      'id': post_data.get('id'),
       'title': post_data.get('title'),
       'genre': post_data.get('genre'),
       'played': post_data.get('played')})
