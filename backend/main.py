@@ -16,36 +16,31 @@ def shark():
   return("This is Shark!")
 
 GAMES = [
-  {
-  'id': uuid.uuid4().hex,
-  'title': '2k21',
-  'genre': 'sports',
-  'played': True
-  },
-  {
-  'id': uuid.uuid4().hex,
-  'title': 'Evil Within',
-  'genre': 'horror',
-  'played': False
-  },
-  {
-  'id': uuid.uuid4().hex,
-  'title': 'The last of us',
-  'genre': 'survival',
-  'played': True
-  },
-  {
-  'id': uuid.uuid4().hex,
-  'title': 'Days gone',
-  'genre': 'horror/survival',
-  'played': False
-  },
-  {
-  'id': uuid.uuid4().hex,
-  'title': 'Mario',
-  'genre': 'retro',
-  'played': True
-  },
+     {   'id': uuid.uuid4().hex,
+        'title':'2k21',
+        'genre':'sports',
+        'played': True,
+    },
+    {   'id': uuid.uuid4().hex,
+        'title':'Evil Within',
+        'genre':'horror',
+        'played': False,
+    },
+    {   'id': uuid.uuid4().hex,
+        'title':'the last of us',
+        'genre':'survival',
+        'played': True,
+    },
+    {  'id': uuid.uuid4().hex,
+        'title':'days gone',
+        'genre':'horror/survival',
+        'played': False,
+    },
+    {   'id': uuid.uuid4().hex,
+        'title':'mario',
+        'genre':'retro',
+        'played': True,
+    }
 ]
 
 #get route here and post
